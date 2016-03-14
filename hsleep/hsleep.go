@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func Hsleep(secs int) {
+func Hsleep(secs int) error {
 	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 	duration := time.Duration(secs) * time.Second
@@ -23,4 +23,5 @@ func Hsleep(secs int) {
 	// Terminal escape \033[2K ???
 	fmt.Fprintf(os.Stderr, "                  \r")
 	fmt.Fprintf(os.Stderr, "> Done!\n")
+	return nil
 }
