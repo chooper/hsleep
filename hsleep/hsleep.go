@@ -16,9 +16,9 @@ func Hsleep(secs int) error {
 	duration := time.Duration(secs) * time.Second
 	deadline := time.Now().Add(duration)
 
-	for deadline.After(time.Now()) {
+	for now := time.Now(); deadline.After(now); now = time.Now() {
 		if rng.Intn(100) <= chance_to_emit {
-			time_left := deadline.Sub(time.Now())
+			time_left := deadline.Sub(now)
 			fmt.Fprintf(os.Stderr, "> %s\r", time_left.String())
 
 			if time_left > sleep_for {
