@@ -7,6 +7,9 @@ import (
 	"time"
 )
 
+const chance_to_emit = 33
+const sleep_for = 100 * time.Millisecond
+
 func Hsleep(secs int) error {
 	rng := rand.New(rand.NewSource(time.Now().UnixNano()))
 
@@ -14,9 +17,13 @@ func Hsleep(secs int) error {
 	deadline := time.Now().Add(duration)
 
 	for deadline.After(time.Now()) {
-		if rng.Intn(100) > 33 {
+		if rng.Intn(100) <= chance_to_emit {
 			time_left := deadline.Sub(time.Now())
 			fmt.Fprintf(os.Stderr, "> %s\r", time_left.String())
+
+			if time_left > sleep_for {
+				time.Sleep(sleep_for)
+			}
 		}
 	}
 	// FIXME(charles) Find a better way to clear the line
