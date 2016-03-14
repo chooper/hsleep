@@ -20,6 +20,5 @@ $ hsleep 5
 ```
 
 ## Screenshots
-![hsleep counting down](https://cloud.githubusercontent.com/assets/164559/13746097/e97e0b8a-e9ae-11e5-8c8a-6acc385fd909.png)
-![hsleep is finished](https://cloud.githubusercontent.com/assets/164559/13746102/edea15e2-e9ae-11e5-95c6-502219d60383.png)
-
+![hsleep counting down](https://cloud.githubusercontent.com/assets/164559/13746184/61807fbe-e9af-11e5-93e8-03a8ace44fcc.png)
+![hsleep done](https://cloud.githubusercontent.com/assets/164559/13746267/d430eada-e9af-11e5-9a5d-3785ad7b79cb.png)
