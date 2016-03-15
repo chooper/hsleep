@@ -19,16 +19,13 @@ func Hsleep(secs int) error {
 	for now := time.Now(); deadline.After(now); now = time.Now() {
 		if rng.Intn(100) <= chance_to_emit {
 			time_left := deadline.Sub(now)
-			fmt.Fprintf(os.Stderr, "> %s\r", time_left.String())
+			fmt.Fprintf(os.Stderr, "\033[2K> %s\r", time_left.String())
 
 			if time_left > sleep_for {
 				time.Sleep(sleep_for)
 			}
 		}
 	}
-	// FIXME(charles) Find a better way to clear the line
-	// Terminal escape \033[2K ???
-	fmt.Fprintf(os.Stderr, "                  \r")
-	fmt.Fprintf(os.Stderr, "> Done!\n")
+	fmt.Fprintf(os.Stderr, "\033[2K> Done!\n")
 	return nil
 }
